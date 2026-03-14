@@ -592,7 +592,12 @@ elif page=="Fama-French":
     if res:
         sig="Significatif" if abs(res["t_a"])>1.96 else "Non significatif"
         sc="kg" if abs(res["t_a"])>1.96 and res["alpha"]>0 else "ko" if abs(res["t_a"])<=1.96 else "kr2"
-        st.markdown(f'<div class="kr">{K("ALPHA",f"{res[\"alpha\"]:+.2f}%/an",f"t={res[\"t_a\"]:.2f} ({sig})",sc)}{K("BETA MKT",f"{res[\"mkt\"]:.2f}",f"t={res[\"t_m\"]:.1f}","kb")}{K("SMB (Taille)",f"{res[\"smb\"]:+.2f}",f"t={res[\"t_s\"]:.1f}","kp")}{K("HML (Value)",f"{res[\"hml\"]:+.2f}",f"t={res[\"t_h\"]:.1f}","kt")}{K("R CARRE",f"{res[\"r2\"]*100:.1f}%",f"{res[\"n\"]} obs","ks")}</div>',unsafe_allow_html=True)
+       a_k=K("ALPHA",f"{res['alpha']:+.2f}%/an",f"t={res['t_a']:.2f} ({sig})",sc)
+        m_k=K("BETA MKT",f"{res['mkt']:.2f}",f"t={res['t_m']:.1f}","kb")
+        s_k=K("SMB (Taille)",f"{res['smb']:+.2f}",f"t={res['t_s']:.1f}","kp")
+        h_k=K("HML (Value)",f"{res['hml']:+.2f}",f"t={res['t_h']:.1f}","kt")
+        r_k=K("R CARRE",f"{res['r2']*100:.1f}%",f"{res['n']} obs","ks")
+        st.markdown(f'<div class="kr">{a_k}{m_k}{s_k}{h_k}{r_k}</div>',unsafe_allow_html=True)
 
         # Interpretation
         st.markdown("#### Lecture des resultats")
