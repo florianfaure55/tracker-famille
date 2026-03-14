@@ -592,7 +592,7 @@ elif page=="Fama-French":
     if res:
         sig="Significatif" if abs(res["t_a"])>1.96 else "Non significatif"
         sc="kg" if abs(res["t_a"])>1.96 and res["alpha"]>0 else "ko" if abs(res["t_a"])<=1.96 else "kr2"
-       a_k=K("ALPHA",f"{res['alpha']:+.2f}%/an",f"t={res['t_a']:.2f} ({sig})",sc)
+        a_k=K("ALPHA",f"{res['alpha']:+.2f}%/an",f"t={res['t_a']:.2f} ({sig})",sc)
         m_k=K("BETA MKT",f"{res['mkt']:.2f}",f"t={res['t_m']:.1f}","kb")
         s_k=K("SMB (Taille)",f"{res['smb']:+.2f}",f"t={res['t_s']:.1f}","kp")
         h_k=K("HML (Value)",f"{res['hml']:+.2f}",f"t={res['t_h']:.1f}","kt")
